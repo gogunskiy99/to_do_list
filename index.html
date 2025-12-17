@@ -1,0 +1,38 @@
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Einkaufsliste</title>
+</head>
+<body>
+    <div class="Container">
+        <input id="myInput" type="text" placeholder="Produktname eingeben"></input>
+        <button id="addButton">Hinzufügen</button>
+        <div id="container"></div>
+    </div>
+<script>
+
+    const inputElement = document.getElementById("myInput")
+    const addButton = document.getElementById("addButton")
+    const container = document.getElementById("container")
+
+    addButton.addEventListener("click", function(){
+        if (inputElement.value === "") return
+        const newElement = document.createElement("div")
+        newElement.classList.add("item")
+        newElement.textContent = inputElement.value
+        inputElement.value = ""
+        
+        const deleteButton = document.createElement("button")
+        deleteButton.classList.add("delete-btn")
+        deleteButton.textContent = "X"
+        deleteButton.addEventListener("click", function() {
+        newElement.remove()
+    });
+
+    newElement.appendChild(deleteButton)
+    container.appendChild(newElement)
+
+
+    });
+
+</script>
+</body>
